@@ -13,29 +13,33 @@ final class ContextLogger extends AbstractLogger
     private $logger;
 
     /**
-     * @var string
-     */
-    private $prefix;
-
-    /**
      * @var array
      */
     private $context;
 
     /**
-     * @param LoggerInterface $logger
-     * @param string          $prefix
-     * @param array           $context
+     * @var string
      */
-    public function __construct(LoggerInterface $logger, string $prefix, array $context)
+    private $prefix;
+
+    /**
+     * @param LoggerInterface $logger
+     * @param array           $context
+     * @param string          $prefix
+     */
+    public function __construct(LoggerInterface $logger, array $context, string $prefix = null)
     {
         $this->logger = $logger;
-        $this->prefix = $prefix;
         $this->context = $context;
+
+        if ($prefix !== null) {
+            $prefix = '[' . $prefix . '] ';
+        }
+        $this->prefix = $prefix;
     }
 
     public function log($level, $message, array $context = [])
     {
-        $this->logger->log($level, '[' . $this->prefix . '] ' . $message, $this->context + $context);
+        $this->logger->log($level, $this->prefix . $message, $this->context + $context);
     }
 }

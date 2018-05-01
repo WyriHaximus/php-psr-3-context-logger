@@ -34,7 +34,7 @@ final class ContextLoggerTest extends LoggerInterfaceTest
             return true;
         });
 
-        return new ContextLogger($logger->reveal(), 'FeatureName', []);
+        return new ContextLogger($logger->reveal(), [], 'FeatureName');
     }
 
     public function getLogs()
@@ -42,14 +42,27 @@ final class ContextLoggerTest extends LoggerInterfaceTest
         return $this->logs;
     }
 
-    public function testExclude()
+    public function testTestContextAndPrefix()
     {
         $logger = $this->prophesize(LoggerInterface::class);
         $logger->log('error', '[FeatureName] fOo', ['z' => 26, 's' => 1])->shouldBeCalled();
         $logger->log('error', '[FeatureName] bar', ['z' => 26, 's' => 2])->shouldBeCalled();
         $logger->log('info', '[FeatureName] faa bor', ['z' => 26, 's' => 3])->shouldBeCalled();
 
-        $contextLogger = new ContextLogger($logger->reveal(), 'FeatureName', ['z' => 26]);
+        $contextLogger = new ContextLogger($logger->reveal(), ['z' => 26], 'FeatureName');
+        $contextLogger->log('error', 'fOo', ['s' => 1]);
+        $contextLogger->log('error', 'bar', ['s' => 2]);
+        $contextLogger->log('info', 'faa bor', ['s' => 3]);
+    }
+
+    public function testTestContextAndNoPrefix()
+    {
+        $logger = $this->prophesize(LoggerInterface::class);
+        $logger->log('error', 'fOo', ['z' => 26, 's' => 1])->shouldBeCalled();
+        $logger->log('error', 'bar', ['z' => 26, 's' => 2])->shouldBeCalled();
+        $logger->log('info', 'faa bor', ['z' => 26, 's' => 3])->shouldBeCalled();
+
+        $contextLogger = new ContextLogger($logger->reveal(), ['z' => 26]);
         $contextLogger->log('error', 'fOo', ['s' => 1]);
         $contextLogger->log('error', 'bar', ['s' => 2]);
         $contextLogger->log('info', 'faa bor', ['s' => 3]);
