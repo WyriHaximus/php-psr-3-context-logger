@@ -1,4 +1,4 @@
-# Callable throwable decorator around a [PSR-3](http://www.php-fig.org/psr/psr-3/) logger (to be used with [`react/promise`](https://reactphp.org/promise/) and [`reactivex/rxphp`](https://github.com/ReactiveX/RxPHP))
+# [PSR-3](http://www.php-fig.org/psr/psr-3/) context logger decorator
 
 [![Linux Build Status](https://travis-ci.org/WyriHaximus/php-psr-3-context-logger.png)](https://travis-ci.org/WyriHaximus/php-psr-3-context-logger)
 [![Latest Stable Version](https://poser.pugx.org/WyriHaximus/psr-3-context-logger/v/stable.png)](https://packagist.org/packages/WyriHaximus/psr-3-context-logger)
