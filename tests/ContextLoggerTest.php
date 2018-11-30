@@ -9,6 +9,9 @@ use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use function WyriHaximus\PSR3\checkCorrectLogLevel;
 use function WyriHaximus\PSR3\processPlaceHolders;
 
+/**
+ * @internal
+ */
 final class ContextLoggerTest extends LoggerInterfaceTest
 {
     /**
@@ -29,7 +32,7 @@ final class ContextLoggerTest extends LoggerInterfaceTest
             $message = (string)$message;
             checkCorrectLogLevel($level);
             $message = processPlaceHolders($message, $context);
-            $that->logs[] = $level . ' ' . substr($message, 14);
+            $that->logs[] = $level . ' ' . \substr($message, 14);
 
             return true;
         });
@@ -42,7 +45,7 @@ final class ContextLoggerTest extends LoggerInterfaceTest
         return $this->logs;
     }
 
-    public function testTestContextAndPrefix()
+    public function testTestContextAndPrefix(): void
     {
         $logger = $this->prophesize(LoggerInterface::class);
         $logger->log('error', '[FeatureName] fOo', ['z' => 26, 's' => 1])->shouldBeCalled();
@@ -55,7 +58,7 @@ final class ContextLoggerTest extends LoggerInterfaceTest
         $contextLogger->log('info', 'faa bor', ['s' => 3]);
     }
 
-    public function testTestContextAndNoPrefix()
+    public function testTestContextAndNoPrefix(): void
     {
         $logger = $this->prophesize(LoggerInterface::class);
         $logger->log('error', 'fOo', ['z' => 26, 's' => 1])->shouldBeCalled();

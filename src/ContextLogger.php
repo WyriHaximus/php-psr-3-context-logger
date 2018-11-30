@@ -38,7 +38,7 @@ final class ContextLogger extends AbstractLogger
         $this->prefix = $prefix;
     }
 
-    public function log($level, $message, array $context = [])
+    public function log($level, $message, array $context = []): void
     {
         $this->logger->log($level, $this->prefix . $message, $this->context + $context);
     }
