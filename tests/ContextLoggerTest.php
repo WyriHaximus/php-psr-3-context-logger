@@ -5,8 +5,8 @@ namespace WyriHaximus\Tests\PSR3\ContextLogger;
 use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
 use Psr\Log\Test\LoggerInterfaceTest;
-use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use function WyriHaximus\PSR3\checkCorrectLogLevel;
+use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use function WyriHaximus\PSR3\processPlaceHolders;
 
 /**
