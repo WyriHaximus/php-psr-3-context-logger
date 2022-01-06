@@ -1,50 +1,18 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace WyriHaximus\Tests\PSR3\ContextLogger;
 
-use Prophecy\Argument;
 use Psr\Log\LoggerInterface;
-use Psr\Log\Test\LoggerInterfaceTest;
-use function WyriHaximus\PSR3\checkCorrectLogLevel;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
-use function WyriHaximus\PSR3\processPlaceHolders;
+use WyriHaximus\TestUtilities\TestCase;
 
 /**
  * @internal
  */
-final class ContextLoggerTest extends LoggerInterfaceTest
+final class ContextLoggerTest extends TestCase
 {
-    /**
-     * @var array
-     */
-    public $logs = [];
-
-    public function getLogger()
-    {
-        $that = $this;
-        $logger = $this->prophesize(LoggerInterface::class);
-        $logger->log(
-            Argument::any(),
-            Argument::any(),
-            Argument::any()
-        )->will(function ($args) use ($that) {
-            list($level, $message, $context) = $args;
-            $message = (string)$message;
-            checkCorrectLogLevel($level);
-            $message = processPlaceHolders($message, $context);
-            $that->logs[] = $level . ' ' . \substr($message, 14);
-
-            return true;
-        });
-
-        return new ContextLogger($logger->reveal(), [], 'FeatureName');
-    }
-
-    public function getLogs()
-    {
-        return $this->logs;
-    }
-
     public function testTestContextAndPrefix(): void
     {
         $logger = $this->prophesize(LoggerInterface::class);
