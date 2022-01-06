@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace WyriHaximus\PSR3\ContextLogger;
 
@@ -7,37 +9,34 @@ use Psr\Log\LoggerInterface;
 
 final class ContextLogger extends AbstractLogger
 {
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
+    private LoggerInterface $logger;
+
+    /** @var array<mixed> */
+    private array $context;
+
+    private string $prefix = '';
 
     /**
-     * @var array
+     * @param array<mixed> $context
+     *
+     * @phpstan-ignore-next-line
      */
-    private $context;
-
-    /**
-     * @var string
-     */
-    private $prefix;
-
-    /**
-     * @param LoggerInterface $logger
-     * @param array           $context
-     * @param string          $prefix
-     */
-    public function __construct(LoggerInterface $logger, array $context, string $prefix = null)
+    public function __construct(LoggerInterface $logger, array $context, ?string $prefix = null)
     {
-        $this->logger = $logger;
+        $this->logger  = $logger;
         $this->context = $context;
 
-        if ($prefix !== null) {
-            $prefix = '[' . $prefix . '] ';
+        if ($prefix === null) {
+            return;
         }
-        $this->prefix = $prefix;
+
+        $this->prefix = '[' . $prefix . '] ';
     }
 
+    /**
+     * @inheritDoc
+     * @phpstan-ignore-next-line
+     */
     public function log($level, $message, array $context = []): void
     {
         $this->logger->log($level, $this->prefix . $message, $this->context + $context);
