@@ -8674,23 +8674,23 @@
         },
         {
             "name": "wyrihaximus/psr-3-utilities",
-            "version": "2.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-psr-3-utilities.git",
-                "reference": "4c65e34f23b131a2562c6b57747c7f982a581019"
+                "reference": "da0d10e9342ccbebf6254ba8386ab0decdca0bb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-utilities/zipball/4c65e34f23b131a2562c6b57747c7f982a581019",
-                "reference": "4c65e34f23b131a2562c6b57747c7f982a581019",
+                "url": "https://api.github.com/repos/WyriHaximus/php-psr-3-utilities/zipball/da0d10e9342ccbebf6254ba8386ab0decdca0bb6",
+                "reference": "da0d10e9342ccbebf6254ba8386ab0decdca0bb6",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "^8",
                 "php": "^8",
                 "psr/log": "^3 || ^2",
-                "thecodingmachine/safe": "^1.3"
+                "thecodingmachine/safe": "^2 || ^1.3"
             },
             "require-dev": {
                 "wyrihaximus/test-utilities": "^4.0.0"
@@ -8718,7 +8718,7 @@
             "description": "PSR-3 logger utilities",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-psr-3-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-psr-3-utilities/tree/2.0.0"
+                "source": "https://github.com/WyriHaximus/php-psr-3-utilities/tree/2.1.0"
             },
             "funding": [
                 {
@@ -8726,7 +8726,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-06T20:27:53+00:00"
+            "time": "2022-01-07T16:11:03+00:00"
         },
         {
             "name": "wyrihaximus/test-utilities",
