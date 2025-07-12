@@ -9,28 +9,20 @@ use Psr\Log\LoggerInterface;
 
 final class ContextLogger extends AbstractLogger
 {
-    private LoggerInterface $logger;
-
-    /** @var array<mixed> */
-    private array $context;
-
-    private string $prefix = '';
+    private readonly string $prefix;
 
     /**
      * @param array<mixed> $context
      *
      * @phpstan-ignore-next-line
      */
-    public function __construct(LoggerInterface $logger, array $context, ?string $prefix = null)
+    public function __construct(private readonly LoggerInterface $logger, private readonly array $context, string $prefix = '')
     {
-        $this->logger  = $logger;
-        $this->context = $context;
-
-        if ($prefix === null) {
-            return;
+        if ($prefix !== '') {
+            $prefix = '[' . $prefix . '] ';
         }
 
-        $this->prefix = '[' . $prefix . '] ';
+        $this->prefix = $prefix;
     }
 
     /**
@@ -39,6 +31,7 @@ final class ContextLogger extends AbstractLogger
      */
     public function log($level, $message, array $context = []): void
     {
+        /** @phpstan-ignore psr3.interpolated */
         $this->logger->log($level, $this->prefix . $message, $this->context + $context);
     }
 }
