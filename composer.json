@@ -9,12 +9,13 @@
     }
   ],
   "require": {
-    "php": "^8",
+    "php": "^8.3",
     "psr/log": "^2"
   },
   "require-dev": {
-    "wyrihaximus/psr-3-utilities": "^2",
-    "wyrihaximus/test-utilities": "^4.0.0 || ^5.0.0"
+    "wyrihaximus/makefiles": "^0.4.3",
+    "wyrihaximus/psr-3-utilities": "^2.1",
+    "wyrihaximus/test-utilities": "^7.5.2"
   },
   "autoload": {
     "psr-4": {
@@ -28,15 +29,17 @@
   },
   "config": {
     "allow-plugins": {
-      "infection/extension-installer": true,
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "icanhazstring/composer-unused": true,
       "ergebnis/composer-normalize": true,
+      "icanhazstring/composer-unused": true,
+      "infection/extension-installer": true,
       "localheinz/composer-normalize": true,
-      "ocramius/package-versions": true
+      "ocramius/package-versions": true,
+      "phpstan/extension-installer": true,
+      "wyrihaximus/makefiles": true
     },
     "platform": {
-      "php": "8.0.12"
+      "php": "8.3.13"
     },
     "sort-packages": true
   },
