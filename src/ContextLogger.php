@@ -6,6 +6,7 @@ namespace WyriHaximus\PSR3\ContextLogger;
 
 use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
+use Stringable;
 
 final class ContextLogger extends AbstractLogger
 {
@@ -25,11 +26,8 @@ final class ContextLogger extends AbstractLogger
         $this->prefix = $prefix;
     }
 
-    /**
-     * @inheritDoc
-     * @phpstan-ignore-next-line
-     */
-    public function log($level, $message, array $context = []): void
+    /** @inheritdoc */
+    public function log($level, string|Stringable $message, array $context = []): void
     {
         /** @phpstan-ignore psr3.interpolated */
         $this->logger->log($level, $this->prefix . $message, $this->context + $context);
