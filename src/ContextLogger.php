@@ -4,20 +4,22 @@ declare(strict_types=1);
 
 namespace WyriHaximus\PSR3\ContextLogger;
 
-use Psr\Log\AbstractLogger;
 use Psr\Log\LoggerInterface;
+use Psr\Log\LoggerTrait;
 use Stringable;
 
-final class ContextLogger extends AbstractLogger
+final readonly class ContextLogger implements LoggerInterface
 {
-    private readonly string $prefix;
+    use LoggerTrait;
+
+    private string $prefix;
 
     /**
      * @param array<mixed> $context
      *
-     * @phpstan-ignore-next-line
+     * @phpstan-ignore ergebnis.noConstructorParameterWithDefaultValue
      */
-    public function __construct(private readonly LoggerInterface $logger, private readonly array $context, string $prefix = '')
+    public function __construct(private LoggerInterface $logger, private array $context, string $prefix = '')
     {
         if ($prefix !== '') {
             $prefix = '[' . $prefix . '] ';
@@ -26,7 +28,10 @@ final class ContextLogger extends AbstractLogger
         $this->prefix = $prefix;
     }
 
-    /** @inheritdoc */
+    /**
+     * @inheritdoc
+     * @phpstan-ignore typeCoverage.paramTypeCoverage
+     */
     public function log($level, string|Stringable $message, array $context = []): void
     {
         /** @phpstan-ignore psr3.interpolated */
