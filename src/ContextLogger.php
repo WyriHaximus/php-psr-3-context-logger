@@ -8,6 +8,7 @@ use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 use Stringable;
 
+/** @api */
 final readonly class ContextLogger implements LoggerInterface
 {
     use LoggerTrait;
