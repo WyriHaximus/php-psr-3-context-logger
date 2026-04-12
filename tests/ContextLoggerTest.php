@@ -11,7 +11,6 @@ use Psr\Log\LoggerInterface;
 use WyriHaximus\PSR3\ContextLogger\ContextLogger;
 use WyriHaximus\TestUtilities\TestCase;
 
-/** @internal */
 final class ContextLoggerTest extends TestCase
 {
     #[Test]
