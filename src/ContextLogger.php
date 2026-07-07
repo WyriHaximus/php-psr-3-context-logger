@@ -29,10 +29,7 @@ final readonly class ContextLogger implements LoggerInterface
         $this->prefix = $prefix;
     }
 
-    /**
-     * @inheritdoc
-     * @phpstan-ignore typeCoverage.paramTypeCoverage
-     */
+    /** @inheritdoc */
     public function log($level, string|Stringable $message, array $context = []): void
     {
         /** @phpstan-ignore psr3.interpolated */
