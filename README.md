@@ -26,7 +26,7 @@ $contextLogger->info('Message'); // $logger will be called with: log('info', 'Me
 
 ## Usage with prefix
 
-With prefix the given prefix, for example `Github` will be prefixed to the message within brackets: `[Github] `.
+With prefix the given prefix, for example `Github` will be prefixed to the message within brackets (`[Github]`), followed by a space.
 
 ```php
 $logger = new Psr3Logger();
