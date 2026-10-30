@@ -5,9 +5,8 @@
 [![Total Downloads](https://poser.pugx.org/WyriHaximus/psr-3-context-logger/downloads.png)](https://packagist.org/packages/WyriHaximus/psr-3-context-logger/stats)
 [![Code Coverage](https://scrutinizer-ci.com/g/WyriHaximus/php-psr-3-context-logger/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/WyriHaximus/php-psr-3-context-logger/?branch=master)
 [![License](https://poser.pugx.org/WyriHaximus/psr-3-context-logger/license.png)](https://packagist.org/packages/wyrihaximus/psr-3-context-logger)
-[![PHP 7 ready](http://php7ready.timesplinter.ch/WyriHaximus/php-psr-3-context-logger/badge.svg)](https://travis-ci.org/WyriHaximus/php-psr-3-context-logger)
 
-### Installation ###
+## Installation
 
 To install via [Composer](http://getcomposer.org/), use the command below, it will automatically detect the latest version and bind it with `^`.
 
@@ -35,13 +34,13 @@ $contextLogger = new ContextLogger($logger, ['key' => 'value'], 'Prefix');
 $contextLogger->info('Message'); // $logger will be called with: log('info', '[Prefix] Message', ['key' => 'value']);
 ```
 
-## Contributing ##
+## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-## License ##
+## License
 
-Copyright 2026 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
+Copyright 2026 Cees-Jan Kiewiet
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
